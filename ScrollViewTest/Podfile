@@ -11,6 +11,7 @@ target 'ScrollViewTest' do
   pod 'YYKit'
   pod 'MJRefresh'
   pod 'MJExtension'
+  pod 'Masonry'
 
   target 'ScrollViewTestTests' do
     inherit! :search_paths
