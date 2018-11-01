@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1620688C9B4E756F199F4704 /* libPods-ScrollViewTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75639DE2885B188062B003D /* libPods-ScrollViewTestTests.a */; };
+		18A7F1D1218B47C2007E75F7 /* TableViewLinkageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */; };
+		18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D3218B4906007E75F7 /* LinkageView.m */; };
 		18DEE4882189F49C00E320DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE4872189F49C00E320DA /* AppDelegate.m */; };
 		18DEE48B2189F49C00E320DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE48A2189F49C00E320DA /* ViewController.m */; };
 		18DEE48E2189F49C00E320DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18DEE48C2189F49C00E320DA /* Main.storyboard */; };
@@ -39,6 +41,10 @@
 
 /* Begin PBXFileReference section */
 		184F55CB689ABB0988E55F49 /* Pods-ScrollViewTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollViewTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollViewTestTests/Pods-ScrollViewTestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		18A7F1CF218B47C2007E75F7 /* TableViewLinkageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewLinkageViewController.h; sourceTree = "<group>"; };
+		18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewLinkageViewController.m; sourceTree = "<group>"; };
+		18A7F1D2218B4906007E75F7 /* LinkageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageView.h; sourceTree = "<group>"; };
+		18A7F1D3218B4906007E75F7 /* LinkageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageView.m; sourceTree = "<group>"; };
 		18DEE4832189F49C00E320DA /* ScrollViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18DEE4862189F49C00E320DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18DEE4872189F49C00E320DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -93,6 +99,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18A7F1CE218B4759007E75F7 /* TableViewLinkage */ = {
+			isa = PBXGroup;
+			children = (
+				18A7F1D5218B490E007E75F7 /* View */,
+				18A7F1CF218B47C2007E75F7 /* TableViewLinkageViewController.h */,
+				18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */,
+			);
+			path = TableViewLinkage;
+			sourceTree = "<group>";
+		};
+		18A7F1D5218B490E007E75F7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18A7F1D2218B4906007E75F7 /* LinkageView.h */,
+				18A7F1D3218B4906007E75F7 /* LinkageView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		18DEE47A2189F49C00E320DA = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +147,7 @@
 				18DEE4872189F49C00E320DA /* AppDelegate.m */,
 				18DEE4892189F49C00E320DA /* ViewController.h */,
 				18DEE48A2189F49C00E320DA /* ViewController.m */,
+				18A7F1CE218B4759007E75F7 /* TableViewLinkage */,
 				18DEE48C2189F49C00E320DA /* Main.storyboard */,
 				18DEE48F2189F49E00E320DA /* Assets.xcassets */,
 				18DEE4912189F49E00E320DA /* LaunchScreen.storyboard */,
@@ -461,6 +487,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A7F1D1218B47C2007E75F7 /* TableViewLinkageViewController.m in Sources */,
+				18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */,
 				18DEE48B2189F49C00E320DA /* ViewController.m in Sources */,
 				18DEE4962189F49E00E320DA /* main.m in Sources */,
 				18DEE4882189F49C00E320DA /* AppDelegate.m in Sources */,
@@ -638,7 +666,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ2GE9Q2S8;
 				INFOPLIST_FILE = ScrollViewTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = zkq.ScrollViewTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -653,7 +684,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ2GE9Q2S8;
 				INFOPLIST_FILE = ScrollViewTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = zkq.ScrollViewTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -667,7 +701,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ScrollViewTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = zkq.ScrollViewTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -682,7 +720,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ScrollViewTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = zkq.ScrollViewTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -696,7 +738,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ScrollViewTestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = zkq.ScrollViewTestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -710,7 +756,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ScrollViewTestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = zkq.ScrollViewTestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -1,0 +1,126 @@
+//
+//  LinkageView.m
+//  ScrollViewTest
+//
+//  Created by zkq on 2018/11/1.
+//  Copyright © 2018 zkq. All rights reserved.
+//
+
+#import "LinkageView.h"
+
+@implementation LinkageViewConfig
+
++ (instancetype)commentConfig {
+    
+    LinkageViewConfig *config = [[[self class] alloc] init];
+    
+    config.leftViewPercent = 0.3f;
+    config.leftViewBackgroundColor = [UIColor whiteColor];
+    config.leftViewSelectedColor = [UIColor lightGrayColor];
+    config.leftViewFont = [UIFont systemFontOfSize:14.0f];
+    config.leftViewSelectedFont = [UIFont systemFontOfSize:14.0f];
+    
+    return config;
+}
+
+@end
+
+@interface LinkageView () <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) LinkageViewConfig *config;
+
+@property (nonatomic, weak) UITableView *leftTableView;
+
+@end
+
+@implementation LinkageView
+
+- (instancetype)init
+{
+    return [self initWithFrame:CGRectZero];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    LinkageViewConfig *config = [LinkageViewConfig commentConfig];
+    
+    return [self initWithFrame:frame config:config];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame config:(LinkageViewConfig *)config
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.config = config;
+        [self _commentUI];
+    }
+    return self;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.config = [LinkageViewConfig commentConfig];
+    [self _commentUI];
+}
+
+- (void)_commentUI {
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.leftTableView = tableView;
+    tableView.rowHeight = self.config.leftViewRowHeight;
+    tableView.sectionHeaderHeight = 0;
+    tableView.sectionFooterHeight = 0;
+    tableView.estimatedRowHeight = self.config.leftViewRowHeight;
+    tableView.estimatedSectionHeaderHeight = 0;
+    tableView.estimatedSectionFooterHeight = 0;
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    
+    [self addSubview:tableView];
+}
+
+#pragma mark - UITableView
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if ([self.dataSource respondsToSelector:@selector(numberOfLinkageView:)]) {
+        return [self.dataSource numberOfLinkageView:self];
+    }
+    
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.dataSource respondsToSelector:@selector(linkageView:leftViewCellForRowAtIndex:)]) {
+        return [self.dataSource linkageView:self leftViewCellForRowAtIndex:indexPath.row];
+    }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
+    }
+    
+    NSString *text;
+    
+    if ([self.dataSource respondsToSelector:@selector(linkageView:titleForIndex:)]) {
+        text = [self.dataSource linkageView:self titleForIndex:indexPath.row];
+    }
+    
+    cell.textLabel.text = text;
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
+
+@end
