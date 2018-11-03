@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TableViewLinkageViewController.h"
+#import <Masonry.h>
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -27,6 +28,14 @@
     tableView.delegate = self;
     [self.view addSubview:tableView];
     self.tableView = tableView;
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    self.tableView.frame = self.view.bounds;
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.view.safeAreaInsets.bottom, 0);
 }
 
 - (NSArray *)datas {

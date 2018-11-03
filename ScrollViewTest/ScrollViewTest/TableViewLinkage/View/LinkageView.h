@@ -72,6 +72,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id <LinkageViewDelegate> delegate;
 @property (nonatomic, weak) id <LinkageViewDataSource> dataSource;
 
+- (instancetype)initWithFrame:(CGRect)frame config:(LinkageViewConfig *)config;
+
+- (void)addRightView:(UIScrollView *)rightView;
+
 @end
 
 NS_ASSUME_NONNULL_END

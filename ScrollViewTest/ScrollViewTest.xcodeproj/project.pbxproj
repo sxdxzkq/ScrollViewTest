@@ -18,6 +18,7 @@
 		18DEE4962189F49E00E320DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE4952189F49E00E320DA /* main.m */; };
 		18DEE4A02189F49E00E320DA /* ScrollViewTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE49F2189F49E00E320DA /* ScrollViewTestTests.m */; };
 		18DEE4AB2189F49E00E320DA /* ScrollViewTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE4AA2189F49E00E320DA /* ScrollViewTestUITests.m */; };
+		18E96B6E218E0AC00035B6FE /* TableViewLinkageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E96B6D218E0AC00035B6FE /* TableViewLinkageViewModel.m */; };
 		32A75CF116609F26DA84D43D /* libPods-ScrollViewTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4EE470871990F5462BE333E /* libPods-ScrollViewTest.a */; };
 		359CF55A44C721527FD88982 /* libPods-ScrollViewTestUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 361A06F7339C700641EE3897 /* libPods-ScrollViewTestUITests.a */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,8 @@
 		18DEE4A62189F49E00E320DA /* ScrollViewTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrollViewTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18DEE4AA2189F49E00E320DA /* ScrollViewTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollViewTestUITests.m; sourceTree = "<group>"; };
 		18DEE4AC2189F49E00E320DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18E96B6C218E0AC00035B6FE /* TableViewLinkageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewLinkageViewModel.h; sourceTree = "<group>"; };
+		18E96B6D218E0AC00035B6FE /* TableViewLinkageViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewLinkageViewModel.m; sourceTree = "<group>"; };
 		361A06F7339C700641EE3897 /* libPods-ScrollViewTestUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ScrollViewTestUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		791C1131B3F88654F6F6D828 /* Pods-ScrollViewTestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollViewTestUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollViewTestUITests/Pods-ScrollViewTestUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		80C5BB85528C7BD407151610 /* Pods-ScrollViewTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollViewTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollViewTest/Pods-ScrollViewTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +105,7 @@
 		18A7F1CE218B4759007E75F7 /* TableViewLinkage */ = {
 			isa = PBXGroup;
 			children = (
+				18E96B6B218E0AA60035B6FE /* Model */,
 				18A7F1D5218B490E007E75F7 /* View */,
 				18A7F1CF218B47C2007E75F7 /* TableViewLinkageViewController.h */,
 				18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */,
@@ -173,6 +177,15 @@
 				18DEE4AC2189F49E00E320DA /* Info.plist */,
 			);
 			path = ScrollViewTestUITests;
+			sourceTree = "<group>";
+		};
+		18E96B6B218E0AA60035B6FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18E96B6C218E0AC00035B6FE /* TableViewLinkageViewModel.h */,
+				18E96B6D218E0AC00035B6FE /* TableViewLinkageViewModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2E74BFBB5846689841CCC71F /* Pods */ = {
@@ -491,6 +504,7 @@
 				18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */,
 				18DEE48B2189F49C00E320DA /* ViewController.m in Sources */,
 				18DEE4962189F49E00E320DA /* main.m in Sources */,
+				18E96B6E218E0AC00035B6FE /* TableViewLinkageViewModel.m in Sources */,
 				18DEE4882189F49C00E320DA /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

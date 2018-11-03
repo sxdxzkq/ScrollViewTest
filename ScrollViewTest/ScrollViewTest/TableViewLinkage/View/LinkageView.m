@@ -30,6 +30,7 @@
 @property (nonatomic, strong) LinkageViewConfig *config;
 
 @property (nonatomic, weak) UITableView *leftTableView;
+@property (nonatomic, weak) UIScrollView *rightView;
 
 @end
 
@@ -63,6 +64,13 @@
     [self _commentUI];
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.leftTableView.frame = CGRectMake(0, 0, self.bounds.size.width * self.config.leftViewPercent, self.bounds.size.height);
+    self.rightView.frame = CGRectMake(self.leftTableView.bounds.size.width, 0, self.bounds.size.width-self.leftTableView.bounds.size.width, self.bounds.size.height);
+}
+
 - (void)_commentUI {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.leftTableView = tableView;
@@ -76,6 +84,12 @@
     tableView.delegate = self;
     
     [self addSubview:tableView];
+}
+
+- (void)addRightView:(UIScrollView *)rightView {
+    self.rightView = rightView;
+    [self addSubview:rightView];
+    rightView.frame = CGRectMake(self.leftTableView.bounds.size.width, 0, self.bounds.size.width-self.leftTableView.bounds.size.width, self.bounds.size.height);
 }
 
 #pragma mark - UITableView
@@ -112,6 +126,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if ([self.delegate respondsToSelector:@selector(linkageView:leftSelected:)]) {
+        [self.delegate linkageView:self leftSelected:indexPath.row];
+    }
     
 }
 
