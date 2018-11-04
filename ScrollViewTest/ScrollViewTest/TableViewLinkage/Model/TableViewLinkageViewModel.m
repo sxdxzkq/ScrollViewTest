@@ -10,6 +10,22 @@
 
 @implementation TableViewLinkageViewModelRow
 
+- (CGFloat)rowHight {
+    
+    if (!_rowHight) {
+        _rowHight = arc4random()%200 / 2.0 + 50;
+    }
+    return _rowHight;
+    
+}
+
+- (uint32_t)colorHex {
+    if (!_colorHex) {
+        _colorHex = arc4random()%0xffffff;
+    }
+    return _colorHex;
+}
+
 @end
 
 @implementation TableViewLinkageViewModelSection
@@ -17,9 +33,9 @@
 - (NSMutableArray *)datas {
     if (!_datas) {
         _datas = [NSMutableArray array];
-        for (NSInteger i = 0; i < 10; i++) {
-            TableViewLinkageViewModelRow *section = [[TableViewLinkageViewModelRow alloc] init];
-            [_datas addObject:section];
+        for (NSInteger i = 0; i < arc4random()%14+6; i++) {
+            TableViewLinkageViewModelRow *row = [[TableViewLinkageViewModelRow alloc] init];
+            [_datas addObject:row];
         }
     }
     return _datas;
@@ -32,7 +48,7 @@
 - (NSMutableArray *)datas {
     if (!_datas) {
         _datas = [NSMutableArray array];
-        for (NSInteger i = 0; i < 10; i++) {
+        for (NSInteger i = 0; i < 20; i++) {
             TableViewLinkageViewModelSection *section = [[TableViewLinkageViewModelSection alloc] init];
             [_datas addObject:section];
         }

@@ -7,7 +7,10 @@
 //
 
 #import "ViewController.h"
+
 #import "TableViewLinkageViewController.h"
+#import "CollectionViewLinkageViewController.h"
+
 #import <Masonry.h>
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -23,11 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    tableView.dataSource = self;
-    tableView.delegate = self;
-    [self.view addSubview:tableView];
-    self.tableView = tableView;
+    
+    [self _commonUI];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -35,12 +35,24 @@
     
     self.tableView.frame = self.view.bounds;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.view.safeAreaInsets.bottom, 0);
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.view.safeAreaInsets.bottom, 0);
+    } else {
+        // Fallback on earlier versions
+    }
+}
+
+- (void)_commonUI {
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    [self.view addSubview:tableView];
+    self.tableView = tableView;
 }
 
 - (NSArray *)datas {
     if (!_datas) {
-        _datas = @[@"TableView联动"];
+        _datas = @[@"TableView联动", @"CollectionView联动(未完成)"];
     }
     return _datas;
 }
@@ -63,7 +75,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.navigationController pushViewController:[[TableViewLinkageViewController alloc] init] animated:YES];
+    
+    switch (indexPath.row) {
+        case 0:
+            [self.navigationController pushViewController:[[TableViewLinkageViewController alloc] init] animated:YES];
+            break;
+        case 1:
+            [self.navigationController pushViewController:[[CollectionViewLinkageViewController alloc] init] animated:YES];
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 @end

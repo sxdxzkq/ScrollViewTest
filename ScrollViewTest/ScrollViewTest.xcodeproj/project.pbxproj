@@ -10,6 +10,9 @@
 		1620688C9B4E756F199F4704 /* libPods-ScrollViewTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75639DE2885B188062B003D /* libPods-ScrollViewTestTests.a */; };
 		18A7F1D1218B47C2007E75F7 /* TableViewLinkageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */; };
 		18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D3218B4906007E75F7 /* LinkageView.m */; };
+		18CCA37D218EE6A200B871F9 /* CollectionViewLinkageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CCA37C218EE6A200B871F9 /* CollectionViewLinkageViewController.m */; };
+		18CCA381218EF1E800B871F9 /* HYCollectViewAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CCA37F218EF1E800B871F9 /* HYCollectViewAlignedLayout.m */; };
+		18CCA385218F0BFE00B871F9 /* ZKQCollectViewAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CCA384218F0BFD00B871F9 /* ZKQCollectViewAlignedLayout.m */; };
 		18DEE4882189F49C00E320DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE4872189F49C00E320DA /* AppDelegate.m */; };
 		18DEE48B2189F49C00E320DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE48A2189F49C00E320DA /* ViewController.m */; };
 		18DEE48E2189F49C00E320DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18DEE48C2189F49C00E320DA /* Main.storyboard */; };
@@ -46,6 +49,13 @@
 		18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewLinkageViewController.m; sourceTree = "<group>"; };
 		18A7F1D2218B4906007E75F7 /* LinkageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageView.h; sourceTree = "<group>"; };
 		18A7F1D3218B4906007E75F7 /* LinkageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageView.m; sourceTree = "<group>"; };
+		18CCA373218E9CCB00B871F9 /* ScrollView-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScrollView-PrefixHeader.pch"; sourceTree = "<group>"; };
+		18CCA37B218EE6A200B871F9 /* CollectionViewLinkageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewLinkageViewController.h; sourceTree = "<group>"; };
+		18CCA37C218EE6A200B871F9 /* CollectionViewLinkageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewLinkageViewController.m; sourceTree = "<group>"; };
+		18CCA37F218EF1E800B871F9 /* HYCollectViewAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCollectViewAlignedLayout.m; sourceTree = "<group>"; };
+		18CCA380218EF1E800B871F9 /* HYCollectViewAlignedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCollectViewAlignedLayout.h; sourceTree = "<group>"; };
+		18CCA383218F0BFD00B871F9 /* ZKQCollectViewAlignedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKQCollectViewAlignedLayout.h; sourceTree = "<group>"; };
+		18CCA384218F0BFD00B871F9 /* ZKQCollectViewAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKQCollectViewAlignedLayout.m; sourceTree = "<group>"; };
 		18DEE4832189F49C00E320DA /* ScrollViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18DEE4862189F49C00E320DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18DEE4872189F49C00E320DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -116,10 +126,54 @@
 		18A7F1D5218B490E007E75F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18CCA374218EA79D00B871F9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				18CCA382218F0BFD00B871F9 /* ZKQCollectViewAlignedLayout */,
+				18CCA37E218EF1E800B871F9 /* CollectViewAlignedLayout */,
+				18CCA375218ED86F00B871F9 /* LinkageView */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		18CCA375218ED86F00B871F9 /* LinkageView */ = {
+			isa = PBXGroup;
+			children = (
 				18A7F1D2218B4906007E75F7 /* LinkageView.h */,
 				18A7F1D3218B4906007E75F7 /* LinkageView.m */,
 			);
-			path = View;
+			path = LinkageView;
+			sourceTree = "<group>";
+		};
+		18CCA37A218EE62900B871F9 /* CollectionViewLinkage */ = {
+			isa = PBXGroup;
+			children = (
+				18CCA37B218EE6A200B871F9 /* CollectionViewLinkageViewController.h */,
+				18CCA37C218EE6A200B871F9 /* CollectionViewLinkageViewController.m */,
+			);
+			path = CollectionViewLinkage;
+			sourceTree = "<group>";
+		};
+		18CCA37E218EF1E800B871F9 /* CollectViewAlignedLayout */ = {
+			isa = PBXGroup;
+			children = (
+				18CCA380218EF1E800B871F9 /* HYCollectViewAlignedLayout.h */,
+				18CCA37F218EF1E800B871F9 /* HYCollectViewAlignedLayout.m */,
+			);
+			path = CollectViewAlignedLayout;
+			sourceTree = "<group>";
+		};
+		18CCA382218F0BFD00B871F9 /* ZKQCollectViewAlignedLayout */ = {
+			isa = PBXGroup;
+			children = (
+				18CCA383218F0BFD00B871F9 /* ZKQCollectViewAlignedLayout.h */,
+				18CCA384218F0BFD00B871F9 /* ZKQCollectViewAlignedLayout.m */,
+			);
+			path = ZKQCollectViewAlignedLayout;
 			sourceTree = "<group>";
 		};
 		18DEE47A2189F49C00E320DA = {
@@ -147,11 +201,14 @@
 		18DEE4852189F49C00E320DA /* ScrollViewTest */ = {
 			isa = PBXGroup;
 			children = (
+				18CCA373218E9CCB00B871F9 /* ScrollView-PrefixHeader.pch */,
 				18DEE4862189F49C00E320DA /* AppDelegate.h */,
 				18DEE4872189F49C00E320DA /* AppDelegate.m */,
 				18DEE4892189F49C00E320DA /* ViewController.h */,
 				18DEE48A2189F49C00E320DA /* ViewController.m */,
+				18CCA374218EA79D00B871F9 /* Common */,
 				18A7F1CE218B4759007E75F7 /* TableViewLinkage */,
+				18CCA37A218EE62900B871F9 /* CollectionViewLinkage */,
 				18DEE48C2189F49C00E320DA /* Main.storyboard */,
 				18DEE48F2189F49E00E320DA /* Assets.xcassets */,
 				18DEE4912189F49E00E320DA /* LaunchScreen.storyboard */,
@@ -503,7 +560,10 @@
 				18A7F1D1218B47C2007E75F7 /* TableViewLinkageViewController.m in Sources */,
 				18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */,
 				18DEE48B2189F49C00E320DA /* ViewController.m in Sources */,
+				18CCA385218F0BFE00B871F9 /* ZKQCollectViewAlignedLayout.m in Sources */,
+				18CCA381218EF1E800B871F9 /* HYCollectViewAlignedLayout.m in Sources */,
 				18DEE4962189F49E00E320DA /* main.m in Sources */,
+				18CCA37D218EE6A200B871F9 /* CollectionViewLinkageViewController.m in Sources */,
 				18E96B6E218E0AC00035B6FE /* TableViewLinkageViewModel.m in Sources */,
 				18DEE4882189F49C00E320DA /* AppDelegate.m in Sources */,
 			);
@@ -679,7 +739,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ2GE9Q2S8;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ScrollViewTest/ScrollView-PrefixHeader.pch";
 				INFOPLIST_FILE = ScrollViewTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -697,7 +760,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ2GE9Q2S8;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ScrollViewTest/ScrollView-PrefixHeader.pch";
 				INFOPLIST_FILE = ScrollViewTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

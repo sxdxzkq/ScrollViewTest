@@ -76,6 +76,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addRightView:(UIScrollView *)rightView;
 
+- (void)leftViewScrollSecelted:(NSInteger)index;
+
 @end
 
 NS_ASSUME_NONNULL_END

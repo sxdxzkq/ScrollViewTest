@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TableViewLinkageViewModelRow : NSObject
 
-@property (nonatomic, assign) double hight;
+@property (nonatomic, assign) CGFloat rowHight;
+
+@property (nonatomic, assign) uint32_t colorHex;
 
 @end
 

@@ -19,6 +19,7 @@
     config.leftViewSelectedColor = [UIColor lightGrayColor];
     config.leftViewFont = [UIFont systemFontOfSize:14.0f];
     config.leftViewSelectedFont = [UIFont systemFontOfSize:14.0f];
+    config.leftViewRowHeight = 50;
     
     return config;
 }
@@ -68,7 +69,9 @@
     [super layoutSubviews];
     
     self.leftTableView.frame = CGRectMake(0, 0, self.bounds.size.width * self.config.leftViewPercent, self.bounds.size.height);
+    
     self.rightView.frame = CGRectMake(self.leftTableView.bounds.size.width, 0, self.bounds.size.width-self.leftTableView.bounds.size.width, self.bounds.size.height);
+    self.rightView.contentInset = self.leftTableView.contentInset;
 }
 
 - (void)_commentUI {
@@ -87,9 +90,20 @@
 }
 
 - (void)addRightView:(UIScrollView *)rightView {
-    self.rightView = rightView;
-    [self addSubview:rightView];
+    rightView.contentInset = self.leftTableView.contentInset;
     rightView.frame = CGRectMake(self.leftTableView.bounds.size.width, 0, self.bounds.size.width-self.leftTableView.bounds.size.width, self.bounds.size.height);
+    
+    [self addSubview:rightView];
+    self.rightView = rightView;
+    
+}
+
+- (void)leftViewScrollSecelted:(NSInteger)index {
+    
+    if ([self.leftTableView numberOfRowsInSection:0]>index) {
+        [_leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+    }
+    
 }
 
 #pragma mark - UITableView
@@ -111,6 +125,9 @@
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
+        cell.selectedBackgroundView = [[UIView alloc] init];
+        cell.selectedBackgroundView.backgroundColor = self.config.leftViewSelectedColor;
+        cell.contentView.backgroundColor = self.config.leftViewBackgroundColor;
     }
     
     NSString *text;
@@ -125,7 +142,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if ([self.delegate respondsToSelector:@selector(linkageView:leftSelected:)]) {
         [self.delegate linkageView:self leftSelected:indexPath.row];
