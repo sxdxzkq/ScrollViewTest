@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1620688C9B4E756F199F4704 /* libPods-ScrollViewTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75639DE2885B188062B003D /* libPods-ScrollViewTestTests.a */; };
+		188C538D21907B6000E42DAC /* ZKQSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C538C21907B6000E42DAC /* ZKQSlideView.m */; };
+		188C53902190A0C600E42DAC /* TabBarSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C538F2190A0C600E42DAC /* TabBarSlideViewController.m */; };
 		18A7F1D1218B47C2007E75F7 /* TableViewLinkageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */; };
 		18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D3218B4906007E75F7 /* LinkageView.m */; };
 		18CCA37D218EE6A200B871F9 /* CollectionViewLinkageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CCA37C218EE6A200B871F9 /* CollectionViewLinkageViewController.m */; };
@@ -45,6 +47,10 @@
 
 /* Begin PBXFileReference section */
 		184F55CB689ABB0988E55F49 /* Pods-ScrollViewTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollViewTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollViewTestTests/Pods-ScrollViewTestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		188C538B21907B6000E42DAC /* ZKQSlideView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQSlideView.h; sourceTree = "<group>"; };
+		188C538C21907B6000E42DAC /* ZKQSlideView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQSlideView.m; sourceTree = "<group>"; };
+		188C538E2190A0C600E42DAC /* TabBarSlideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarSlideViewController.h; sourceTree = "<group>"; };
+		188C538F2190A0C600E42DAC /* TabBarSlideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarSlideViewController.m; sourceTree = "<group>"; };
 		18A7F1CF218B47C2007E75F7 /* TableViewLinkageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewLinkageViewController.h; sourceTree = "<group>"; };
 		18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewLinkageViewController.m; sourceTree = "<group>"; };
 		18A7F1D2218B4906007E75F7 /* LinkageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageView.h; sourceTree = "<group>"; };
@@ -112,6 +118,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		188C53892190763200E42DAC /* ZKQSlideView */ = {
+			isa = PBXGroup;
+			children = (
+				188C538B21907B6000E42DAC /* ZKQSlideView.h */,
+				188C538C21907B6000E42DAC /* ZKQSlideView.m */,
+			);
+			path = ZKQSlideView;
+			sourceTree = "<group>";
+		};
+		188C538A21907AE700E42DAC /* TabBarSlideView */ = {
+			isa = PBXGroup;
+			children = (
+				188C538E2190A0C600E42DAC /* TabBarSlideViewController.h */,
+				188C538F2190A0C600E42DAC /* TabBarSlideViewController.m */,
+			);
+			path = TabBarSlideView;
+			sourceTree = "<group>";
+		};
 		18A7F1CE218B4759007E75F7 /* TableViewLinkage */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +157,7 @@
 		18CCA374218EA79D00B871F9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				188C53892190763200E42DAC /* ZKQSlideView */,
 				18CCA382218F0BFD00B871F9 /* ZKQCollectViewAlignedLayout */,
 				18CCA37E218EF1E800B871F9 /* CollectViewAlignedLayout */,
 				18CCA375218ED86F00B871F9 /* LinkageView */,
@@ -209,6 +234,7 @@
 				18CCA374218EA79D00B871F9 /* Common */,
 				18A7F1CE218B4759007E75F7 /* TableViewLinkage */,
 				18CCA37A218EE62900B871F9 /* CollectionViewLinkage */,
+				188C538A21907AE700E42DAC /* TabBarSlideView */,
 				18DEE48C2189F49C00E320DA /* Main.storyboard */,
 				18DEE48F2189F49E00E320DA /* Assets.xcassets */,
 				18DEE4912189F49E00E320DA /* LaunchScreen.storyboard */,
@@ -562,6 +588,8 @@
 				18DEE48B2189F49C00E320DA /* ViewController.m in Sources */,
 				18CCA385218F0BFE00B871F9 /* ZKQCollectViewAlignedLayout.m in Sources */,
 				18CCA381218EF1E800B871F9 /* HYCollectViewAlignedLayout.m in Sources */,
+				188C53902190A0C600E42DAC /* TabBarSlideViewController.m in Sources */,
+				188C538D21907B6000E42DAC /* ZKQSlideView.m in Sources */,
 				18DEE4962189F49E00E320DA /* main.m in Sources */,
 				18CCA37D218EE6A200B871F9 /* CollectionViewLinkageViewController.m in Sources */,
 				18E96B6E218E0AC00035B6FE /* TableViewLinkageViewModel.m in Sources */,
