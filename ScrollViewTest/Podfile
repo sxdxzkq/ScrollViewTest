@@ -12,6 +12,7 @@ target 'ScrollViewTest' do
   pod 'MJRefresh'
   pod 'MJExtension'
   pod 'Masonry'
+  pod 'FDFullscreenPopGesture'
 
   target 'ScrollViewTestTests' do
     inherit! :search_paths

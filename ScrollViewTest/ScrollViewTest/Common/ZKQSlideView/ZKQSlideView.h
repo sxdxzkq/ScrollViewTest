@@ -6,6 +6,9 @@
 //  Copyright © 2018 zkq. All rights reserved.
 //
 
+/*
+ 感谢DLSlideView作者 github: https://github.com/agdsdl/DLSlideView
+ */
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -13,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class ZKQSlideView;
 
 @protocol ZKQSlideViewDelegate <NSObject>
+
+@optional;
 
 - (void)slideView:(ZKQSlideView *)slideView scrollingFrom:(NSInteger)fromIndex to:(NSInteger)toIndex percent:(CGFloat)percent;
 
@@ -39,9 +44,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, assign) BOOL isScrolling;
 
+// 如果要允许左滑返回请将手势传入
+@property (nonatomic, weak) UIGestureRecognizer *popGestureRecognizer;
+
+
 // Default YES
 @property (nonatomic, assign) BOOL canScroll;
 
+- (void)build;
 - (void)switchTo:(NSInteger)index animation:(BOOL)animation;
 
 

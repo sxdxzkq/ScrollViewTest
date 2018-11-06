@@ -12,6 +12,8 @@
 		188C53902190A0C600E42DAC /* TabBarSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C538F2190A0C600E42DAC /* TabBarSlideViewController.m */; };
 		18A7F1D1218B47C2007E75F7 /* TableViewLinkageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */; };
 		18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D3218B4906007E75F7 /* LinkageView.m */; };
+		18BFB1222191C73300907918 /* ZKQMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BFB1212191C73300907918 /* ZKQMemoryCache.m */; };
+		18BFB1252191D07F00907918 /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BFB1242191D07F00907918 /* TestTableViewController.m */; };
 		18CCA37D218EE6A200B871F9 /* CollectionViewLinkageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CCA37C218EE6A200B871F9 /* CollectionViewLinkageViewController.m */; };
 		18CCA381218EF1E800B871F9 /* HYCollectViewAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CCA37F218EF1E800B871F9 /* HYCollectViewAlignedLayout.m */; };
 		18CCA385218F0BFE00B871F9 /* ZKQCollectViewAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CCA384218F0BFD00B871F9 /* ZKQCollectViewAlignedLayout.m */; };
@@ -55,6 +57,10 @@
 		18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewLinkageViewController.m; sourceTree = "<group>"; };
 		18A7F1D2218B4906007E75F7 /* LinkageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageView.h; sourceTree = "<group>"; };
 		18A7F1D3218B4906007E75F7 /* LinkageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageView.m; sourceTree = "<group>"; };
+		18BFB1202191C73300907918 /* ZKQMemoryCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQMemoryCache.h; sourceTree = "<group>"; };
+		18BFB1212191C73300907918 /* ZKQMemoryCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQMemoryCache.m; sourceTree = "<group>"; };
+		18BFB1232191D07F00907918 /* TestTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
+		18BFB1242191D07F00907918 /* TestTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
 		18CCA373218E9CCB00B871F9 /* ScrollView-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScrollView-PrefixHeader.pch"; sourceTree = "<group>"; };
 		18CCA37B218EE6A200B871F9 /* CollectionViewLinkageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewLinkageViewController.h; sourceTree = "<group>"; };
 		18CCA37C218EE6A200B871F9 /* CollectionViewLinkageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewLinkageViewController.m; sourceTree = "<group>"; };
@@ -121,6 +127,7 @@
 		188C53892190763200E42DAC /* ZKQSlideView */ = {
 			isa = PBXGroup;
 			children = (
+				18BFB11F2191C66B00907918 /* ZKQMemoryCache */,
 				188C538B21907B6000E42DAC /* ZKQSlideView.h */,
 				188C538C21907B6000E42DAC /* ZKQSlideView.m */,
 			);
@@ -152,6 +159,15 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		18BFB11F2191C66B00907918 /* ZKQMemoryCache */ = {
+			isa = PBXGroup;
+			children = (
+				18BFB1202191C73300907918 /* ZKQMemoryCache.h */,
+				18BFB1212191C73300907918 /* ZKQMemoryCache.m */,
+			);
+			path = ZKQMemoryCache;
 			sourceTree = "<group>";
 		};
 		18CCA374218EA79D00B871F9 /* Common */ = {
@@ -231,6 +247,8 @@
 				18DEE4872189F49C00E320DA /* AppDelegate.m */,
 				18DEE4892189F49C00E320DA /* ViewController.h */,
 				18DEE48A2189F49C00E320DA /* ViewController.m */,
+				18BFB1232191D07F00907918 /* TestTableViewController.h */,
+				18BFB1242191D07F00907918 /* TestTableViewController.m */,
 				18CCA374218EA79D00B871F9 /* Common */,
 				18A7F1CE218B4759007E75F7 /* TableViewLinkage */,
 				18CCA37A218EE62900B871F9 /* CollectionViewLinkage */,
@@ -305,7 +323,6 @@
 				18DEE47F2189F49C00E320DA /* Sources */,
 				18DEE4802189F49C00E320DA /* Frameworks */,
 				18DEE4812189F49C00E320DA /* Resources */,
-				F2FCAA7B4EC2A316138AE87B /* [CP] Embed Pods Frameworks */,
 				5702DDE50DA25B061128D938 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -325,8 +342,6 @@
 				18DEE4972189F49E00E320DA /* Sources */,
 				18DEE4982189F49E00E320DA /* Frameworks */,
 				18DEE4992189F49E00E320DA /* Resources */,
-				AF5CAB0ECF74C5E65A6CB5C7 /* [CP] Embed Pods Frameworks */,
-				F7F9BDB723018FF48828F45C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -346,8 +361,6 @@
 				18DEE4A22189F49E00E320DA /* Sources */,
 				18DEE4A32189F49E00E320DA /* Frameworks */,
 				18DEE4A42189F49E00E320DA /* Resources */,
-				36CB1616FD56435FBB82871B /* [CP] Embed Pods Frameworks */,
-				E08DEE76880A53DF0A8DCA48 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -429,21 +442,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		36CB1616FD56435FBB82871B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollViewTestUITests/Pods-ScrollViewTestUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5702DDE50DA25B061128D938 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -516,66 +514,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AF5CAB0ECF74C5E65A6CB5C7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollViewTestTests/Pods-ScrollViewTestTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E08DEE76880A53DF0A8DCA48 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollViewTestUITests/Pods-ScrollViewTestUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F2FCAA7B4EC2A316138AE87B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollViewTest/Pods-ScrollViewTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F7F9BDB723018FF48828F45C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollViewTestTests/Pods-ScrollViewTestTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -585,6 +523,7 @@
 			files = (
 				18A7F1D1218B47C2007E75F7 /* TableViewLinkageViewController.m in Sources */,
 				18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */,
+				18BFB1252191D07F00907918 /* TestTableViewController.m in Sources */,
 				18DEE48B2189F49C00E320DA /* ViewController.m in Sources */,
 				18CCA385218F0BFE00B871F9 /* ZKQCollectViewAlignedLayout.m in Sources */,
 				18CCA381218EF1E800B871F9 /* HYCollectViewAlignedLayout.m in Sources */,
@@ -593,6 +532,7 @@
 				18DEE4962189F49E00E320DA /* main.m in Sources */,
 				18CCA37D218EE6A200B871F9 /* CollectionViewLinkageViewController.m in Sources */,
 				18E96B6E218E0AC00035B6FE /* TableViewLinkageViewModel.m in Sources */,
+				18BFB1222191C73300907918 /* ZKQMemoryCache.m in Sources */,
 				18DEE4882189F49C00E320DA /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

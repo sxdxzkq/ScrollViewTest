@@ -10,7 +10,7 @@
 
 const CGFloat kPanScrollOffsetThreshold = 50.0f;
 
-@interface ZKQSlideView ()
+@interface ZKQSlideView () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, assign) NSInteger oldIndex;
 @property (nonatomic, assign) NSInteger futureIndex;
@@ -26,6 +26,10 @@ const CGFloat kPanScrollOffsetThreshold = 50.0f;
 
 @implementation ZKQSlideView
 
+- (instancetype)init
+{
+    return [self initWithFrame:CGRectZero];
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -41,12 +45,19 @@ const CGFloat kPanScrollOffsetThreshold = 50.0f;
     [self _commonInit];
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.oldViewController.view.frame = self.bounds;
+}
+
 #pragma mark - Private
 - (void)_commonInit {
     
     self.pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panHandler:)];
+    self.pan.delegate = self;
     self.canScroll = YES;
-    
+    self.oldIndex = -1;
+    self.futureIndex = -1;
 }
 
 - (void)removeOld {
@@ -155,17 +166,21 @@ const CGFloat kPanScrollOffsetThreshold = 50.0f;
 }
 
 - (void)repositionForOffsetX:(CGFloat)offsetx{
-    float x = 0.0f;
+    CGFloat x = 0.0f;
+    
+    CGFloat maxOffsetx = 0.0f;
     
     if (self.futureIndex < self.oldIndex) {
-        x = self.bounds.origin.x - self.bounds.size.width + offsetx;
+        x = self.bounds.origin.x - self.bounds.size.width + MIN(offsetx, self.bounds.size.width);
+        maxOffsetx = MIN(offsetx, self.bounds.size.width);
+    } else if (self.futureIndex > self.oldIndex){
+        x = self.bounds.origin.x + self.bounds.size.width + MAX(offsetx, -self.bounds.size.width);
+        maxOffsetx = MAX(offsetx, -self.bounds.size.width);
     }
-    else if(self.futureIndex > self.oldIndex){
-        x = self.bounds.origin.x + self.bounds.size.width + offsetx;
-    }
+    NSLog(@"%f %f",offsetx ,x);
     
     UIViewController *oldvc = self.oldViewController;
-    oldvc.view.frame = CGRectMake(self.bounds.origin.x + offsetx, self.bounds.origin.y, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
+    oldvc.view.frame = CGRectMake(self.bounds.origin.x + maxOffsetx, self.bounds.origin.y, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
     
     if (self.futureIndex >= 0 && self.futureIndex < [self.dataSource numberOfControllersInSlideView:self]) {
         UIViewController *vc = self.futureViewController;
@@ -206,6 +221,10 @@ const CGFloat kPanScrollOffsetThreshold = 50.0f;
     } else {
         [self showAt:index];
     }
+}
+
+- (void)build {
+    [self showAt:0];
 }
 
 #pragma mark - action
@@ -302,6 +321,16 @@ const CGFloat kPanScrollOffsetThreshold = 50.0f;
     
 }
 
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
+    if (self.oldIndex == 0 && self.popGestureRecognizer == otherGestureRecognizer) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 #pragma mark - setter && getter
 
 - (void)setSelectedIndex:(NSInteger)selectedIndex{
@@ -317,7 +346,7 @@ const CGFloat kPanScrollOffsetThreshold = 50.0f;
 - (void)setCanScroll:(BOOL)canScroll {
     _canScroll = canScroll;
     if (canScroll) {
-        if ([[self gestureRecognizers] indexOfObject:self.pan] == NSNotFound) {
+        if (![[self gestureRecognizers] containsObject:self.pan]) {
             [self addGestureRecognizer:self.pan];
         }
     } else {
