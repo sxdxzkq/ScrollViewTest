@@ -177,7 +177,6 @@ const CGFloat kPanScrollOffsetThreshold = 50.0f;
         x = self.bounds.origin.x + self.bounds.size.width + MAX(offsetx, -self.bounds.size.width);
         maxOffsetx = MAX(offsetx, -self.bounds.size.width);
     }
-    NSLog(@"%f %f",offsetx ,x);
     
     UIViewController *oldvc = self.oldViewController;
     oldvc.view.frame = CGRectMake(self.bounds.origin.x + maxOffsetx, self.bounds.origin.y, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
