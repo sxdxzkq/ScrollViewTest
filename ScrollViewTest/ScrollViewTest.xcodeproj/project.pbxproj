@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1620688C9B4E756F199F4704 /* libPods-ScrollViewTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75639DE2885B188062B003D /* libPods-ScrollViewTestTests.a */; };
+		18161296219336C80012DDEC /* ZKQSlideTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18161295219336C80012DDEC /* ZKQSlideTabBarView.m */; };
 		188C538D21907B6000E42DAC /* ZKQSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C538C21907B6000E42DAC /* ZKQSlideView.m */; };
 		188C53902190A0C600E42DAC /* TabBarSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C538F2190A0C600E42DAC /* TabBarSlideViewController.m */; };
 		18A7F1D1218B47C2007E75F7 /* TableViewLinkageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */; };
@@ -48,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18161293219333800012DDEC /* ZKQSlideTabBarProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQSlideTabBarProtocol.h; sourceTree = "<group>"; };
+		18161294219336C80012DDEC /* ZKQSlideTabBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQSlideTabBarView.h; sourceTree = "<group>"; };
+		18161295219336C80012DDEC /* ZKQSlideTabBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQSlideTabBarView.m; sourceTree = "<group>"; };
 		184F55CB689ABB0988E55F49 /* Pods-ScrollViewTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollViewTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollViewTestTests/Pods-ScrollViewTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		188C538B21907B6000E42DAC /* ZKQSlideView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQSlideView.h; sourceTree = "<group>"; };
 		188C538C21907B6000E42DAC /* ZKQSlideView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQSlideView.m; sourceTree = "<group>"; };
@@ -124,9 +128,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18161292219331550012DDEC /* ZKQSlideTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				18161293219333800012DDEC /* ZKQSlideTabBarProtocol.h */,
+				18161294219336C80012DDEC /* ZKQSlideTabBarView.h */,
+				18161295219336C80012DDEC /* ZKQSlideTabBarView.m */,
+			);
+			path = ZKQSlideTabBar;
+			sourceTree = "<group>";
+		};
 		188C53892190763200E42DAC /* ZKQSlideView */ = {
 			isa = PBXGroup;
 			children = (
+				18161292219331550012DDEC /* ZKQSlideTabBar */,
 				18BFB11F2191C66B00907918 /* ZKQMemoryCache */,
 				188C538B21907B6000E42DAC /* ZKQSlideView.h */,
 				188C538C21907B6000E42DAC /* ZKQSlideView.m */,
@@ -530,6 +545,7 @@
 				188C53902190A0C600E42DAC /* TabBarSlideViewController.m in Sources */,
 				188C538D21907B6000E42DAC /* ZKQSlideView.m in Sources */,
 				18DEE4962189F49E00E320DA /* main.m in Sources */,
+				18161296219336C80012DDEC /* ZKQSlideTabBarView.m in Sources */,
 				18CCA37D218EE6A200B871F9 /* CollectionViewLinkageViewController.m in Sources */,
 				18E96B6E218E0AC00035B6FE /* TableViewLinkageViewModel.m in Sources */,
 				18BFB1222191C73300907918 /* ZKQMemoryCache.m in Sources */,
