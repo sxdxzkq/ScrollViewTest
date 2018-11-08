@@ -11,14 +11,17 @@
 
 #import "ZKQSlideView.h"
 #import "ZKQMemoryCache.h"
+#import "ZKQSlideTabBarView.h"
 
 #import <UINavigationController+FDFullscreenPopGesture.h>
 
-@interface TabBarSlideViewController () <ZKQSlideViewDelegate, ZKQSlideViewDataSource>
+@interface TabBarSlideViewController () <ZKQSlideViewDelegate, ZKQSlideViewDataSource, ZKQSlideTabbarDelegate>
 
 @property (nonatomic, weak) ZKQSlideView *slideView;
 
 @property (nonatomic, strong) ZKQMemoryCache *cache;
+
+@property (nonatomic, weak) ZKQSlideTabBarView *slideTabBarView;
 
 @end
 
@@ -34,10 +37,42 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    self.slideView.frame = self.view.bounds;
+    
+    [self.view bringSubviewToFront:self.slideTabBarView];
+    
+    CGFloat tabBarHight = 40;
+    CGFloat top = 0;
+    if (@available(iOS 11.0, *)) {
+        top = self.view.safeAreaInsets.top;
+    } else {
+        // Fallback on earlier versions
+        top = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+    }
+    
+    self.slideTabBarView.frame = CGRectMake(0, top, self.view.bounds.size.width, tabBarHight);
+    
+    self.slideView.frame = CGRectMake(0, self.slideTabBarView.frame.origin.y + self.slideTabBarView.bounds.size.height, self.view.bounds.size.width, self.view.bounds.size.height - self.slideTabBarView.frame.origin.y - self.slideTabBarView.bounds.size.height);
 }
 
 - (void)_commonUI {
+    
+    ZKQSlideTabBarView *slideTabBarView = [[ZKQSlideTabBarView alloc] init];
+    slideTabBarView.delegate = self;
+    slideTabBarView.trackColor = [UIColor colorWithRGB:0xcc0000];
+    
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSInteger i = 0; i < 4; i++) {
+        ZKQSlideTabBarViewItem *item = [ZKQSlideTabBarViewItem commonItem];
+        item.title = [NSString stringWithFormat:@"第%zd个", i];
+        [array addObject:item];
+    }
+    
+    [slideTabBarView buildTabBarItems:array];
+    
+    [self.view addSubview:slideTabBarView];
+    self.slideTabBarView = slideTabBarView;
+    
+    
     ZKQSlideView *slideView = [[ZKQSlideView alloc] init];
     slideView.delegate = self;
     slideView.dataSource = self;
@@ -50,6 +85,8 @@
     
     [self.slideView build];
 }
+
+#pragma mark - ZKQSlideView
 
 - (NSInteger)numberOfControllersInSlideView:(ZKQSlideView *)slideView {
     return 4;
@@ -65,7 +102,7 @@
         return con;
     }
     
-    UIViewController *message = [[UIViewController alloc] init];
+    TestTableViewController *message = [[TestTableViewController alloc] init];
     
     UIColor *color;
     
@@ -93,7 +130,7 @@
 }
 
 - (void)slideView:(ZKQSlideView *)slideView scrollingFrom:(NSInteger)fromIndex to:(NSInteger)toIndex percent:(CGFloat)percent {
-    
+    [self.slideTabBarView scrollingFrom:fromIndex to:toIndex percent:percent];
 }
 
 - (void)slideView:(ZKQSlideView *)slideView didScrolledViewController:(UIViewController *)viewController atIndex:(NSInteger)index {
@@ -103,8 +140,6 @@
 - (void)slideView:(ZKQSlideView *)slideView scrollCanceled:(NSInteger)fromIndex {
     
 }
-
-#pragma mark - ZKQSlideView
 
 /*
 #pragma mark - Navigation

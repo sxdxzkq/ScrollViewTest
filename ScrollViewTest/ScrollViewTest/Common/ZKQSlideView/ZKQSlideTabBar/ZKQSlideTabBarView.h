@@ -12,6 +12,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, ZKQSlideTabBarViewItemImageType) {
+    ZKQSlideTabBarViewItemImageTypeLeft,
+    ZKQSlideTabBarViewItemImageTypeRight,
+};
+
 @interface ZKQSlideTabBarViewItem : NSObject
 
 @property (nonatomic, copy) NSString *title;
@@ -20,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIColor *titleColor;
 @property (nonatomic, strong) UIColor *selectedTitleColor;
 @property (nonatomic, strong) UIFont *textFont;
+@property (nonatomic, assign) CGFloat imageLabelspace;
+@property (nonatomic, assign) ZKQSlideTabBarViewItemImageType imageType;
+
++ (instancetype)commonItem;
 
 @end
 
@@ -38,7 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)buildTabBarItems:(NSArray <ZKQSlideTabBarViewItem *> *)tabBarItems;
 
-- (void)switchingFrom:(NSInteger)fromIndex to:(NSInteger)toIndex percent:(float)percent;
+- (void)scrollingFrom:(NSInteger)fromIndex to:(NSInteger)toIndex percent:(CGFloat)percent;
 
 
 @end

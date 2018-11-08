@@ -58,6 +58,8 @@ const CGFloat kPanScrollOffsetThreshold = 50.0f;
     self.canScroll = YES;
     self.oldIndex = -1;
     self.futureIndex = -1;
+    // 关闭自动空出NavigationBar
+    self.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)removeOld {
