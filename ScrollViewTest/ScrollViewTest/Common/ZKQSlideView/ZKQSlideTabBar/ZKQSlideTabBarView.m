@@ -159,6 +159,7 @@ const NSInteger kImageTagBase = 3000;
         
         UIButton *baseButton = [UIButton buttonWithType:UIButtonTypeCustom];
         baseButton.tag = kButtonTagBase + i;
+        [baseButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.backgroundImageView addSubview:baseButton];
         
         UILabel *label = [[UILabel alloc] init];
@@ -183,6 +184,21 @@ const NSInteger kImageTagBase = 3000;
     }
     self.selectedIndex = 0;
     [self layoutIfNeeded];
+    
+}
+
+#pragma mark - Action
+- (void)buttonClick:(UIButton *)button {
+    
+    if ([self.delegate respondsToSelector:@selector(slideTabBarCanSelect:)] && [self.delegate slideTabBarCanSelect:self]) {
+        NSInteger selectIndex = button.tag - kButtonTagBase;
+        if (selectIndex != self.selectedIndex) {
+            self.selectedIndex = selectIndex;
+            if ([self.delegate respondsToSelector:@selector(slideTabBar:selectAt:)]) {
+                [self.delegate slideTabBar:self selectAt:selectIndex];
+            }
+        }
+    }
     
 }
 

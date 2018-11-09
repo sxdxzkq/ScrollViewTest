@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL canScroll;
 
 - (void)build;
-- (void)switchTo:(NSInteger)index animation:(BOOL)animation;
+- (void)scrollTo:(NSInteger)index animation:(BOOL)animation;
 
 
 @end

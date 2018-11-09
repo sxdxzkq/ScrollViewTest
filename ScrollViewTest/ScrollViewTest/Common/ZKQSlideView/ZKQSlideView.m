@@ -9,6 +9,7 @@
 #import "ZKQSlideView.h"
 
 const CGFloat kPanScrollOffsetThreshold = 50.0f;
+const NSTimeInterval kScrollTime = 0.3f;
 
 @interface ZKQSlideView () <UIGestureRecognizerDelegate>
 
@@ -141,7 +142,7 @@ const CGFloat kPanScrollOffsetThreshold = 50.0f;
         newViewController.view.frame = newStartRect;
         [newViewController willMoveToParentViewController:self.baseViewController];
         
-        [self.baseViewController transitionFromViewController:oldViewController toViewController:newViewController duration:0.4 options:0 animations:^{
+        [self.baseViewController transitionFromViewController:oldViewController toViewController:newViewController duration:kScrollTime options:0 animations:^{
             newViewController.view.frame = nowRect;
             oldViewController.view.frame = oldEndRect;
         } completion:^(BOOL finished) {
@@ -216,7 +217,7 @@ const CGFloat kPanScrollOffsetThreshold = 50.0f;
 }
 
 #pragma mark - public
-- (void)switchTo:(NSInteger)index animation:(BOOL)animation {
+- (void)scrollTo:(NSInteger)index animation:(BOOL)animation {
     if (animation) {
         [self showAtAnimation:index];
     } else {
@@ -284,7 +285,7 @@ const CGFloat kPanScrollOffsetThreshold = 50.0f;
         if (self.futureIndex >= 0 && self.futureIndex < [self.dataSource numberOfControllersInSlideView:self] && self.futureIndex != self.oldIndex) {
             if (fabs(offsetx) > kPanScrollOffsetThreshold) {
                 NSTimeInterval animatedTime = 0;
-                animatedTime = fabs(self.frame.size.width - fabs(offsetx)) / self.frame.size.width * 0.4;
+                animatedTime = fabs(self.frame.size.width - fabs(offsetx)) / self.frame.size.width * kScrollTime;
                 [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
                 [UIView animateWithDuration:animatedTime animations:^{
                     [self repositionForOffsetX:offsetx > 0 ? self.bounds.size.width : -self.bounds.size.width];
@@ -336,7 +337,7 @@ const CGFloat kPanScrollOffsetThreshold = 50.0f;
 
 - (void)setSelectedIndex:(NSInteger)selectedIndex{
     if (selectedIndex != self.oldIndex) {
-        [self switchTo:selectedIndex animation:NO];
+        [self scrollTo:selectedIndex animation:NO];
     }
 }
 

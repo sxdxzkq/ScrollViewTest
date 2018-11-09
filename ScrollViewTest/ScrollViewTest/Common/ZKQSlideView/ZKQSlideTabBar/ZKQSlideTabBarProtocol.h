@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ZKQSlideTabbarDelegate <NSObject>
 @optional;
-- (BOOL)slideTabbarCanSelect:(id)sender;
-- (void)slideTabbar:(id)sender selectAt:(NSInteger)index;
+- (BOOL)slideTabBarCanSelect:(id)sender;
+- (void)slideTabBar:(id)sender selectAt:(NSInteger)index;
 @end
 
 @protocol ZKQSlideTabBarProtocol <NSObject>

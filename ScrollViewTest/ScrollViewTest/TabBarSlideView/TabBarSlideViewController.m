@@ -141,6 +141,18 @@
     
 }
 
+- (BOOL)slideTabBarCanSelect:(id)sender {
+    if (self.slideView.isScrolling) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (void)slideTabBar:(id)sender selectAt:(NSInteger)index {
+    [self.slideView scrollTo:index animation:YES];
+}
+
 /*
 #pragma mark - Navigation
 
