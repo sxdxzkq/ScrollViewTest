@@ -14,6 +14,8 @@
 		188C53902190A0C600E42DAC /* TabBarSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C538F2190A0C600E42DAC /* TabBarSlideViewController.m */; };
 		18A7F1D1218B47C2007E75F7 /* TableViewLinkageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */; };
 		18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D3218B4906007E75F7 /* LinkageView.m */; };
+		18B3D9A02195D88D00BFC7DA /* ScrollSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3D99F2195D88D00BFC7DA /* ScrollSlideViewController.m */; };
+		18BCCA6A2196C49E0025A340 /* ZKQScrollSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BCCA692196C49E0025A340 /* ZKQScrollSlideView.m */; };
 		18BFB1222191C73300907918 /* ZKQMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BFB1212191C73300907918 /* ZKQMemoryCache.m */; };
 		18BFB1252191D07F00907918 /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BFB1242191D07F00907918 /* TestTableViewController.m */; };
 		18CCA37D218EE6A200B871F9 /* CollectionViewLinkageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CCA37C218EE6A200B871F9 /* CollectionViewLinkageViewController.m */; };
@@ -64,6 +66,10 @@
 		18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewLinkageViewController.m; sourceTree = "<group>"; };
 		18A7F1D2218B4906007E75F7 /* LinkageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageView.h; sourceTree = "<group>"; };
 		18A7F1D3218B4906007E75F7 /* LinkageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageView.m; sourceTree = "<group>"; };
+		18B3D99E2195D88D00BFC7DA /* ScrollSlideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollSlideViewController.h; sourceTree = "<group>"; };
+		18B3D99F2195D88D00BFC7DA /* ScrollSlideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollSlideViewController.m; sourceTree = "<group>"; };
+		18BCCA682196C49E0025A340 /* ZKQScrollSlideView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQScrollSlideView.h; sourceTree = "<group>"; };
+		18BCCA692196C49E0025A340 /* ZKQScrollSlideView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQScrollSlideView.m; sourceTree = "<group>"; };
 		18BFB1202191C73300907918 /* ZKQMemoryCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQMemoryCache.h; sourceTree = "<group>"; };
 		18BFB1212191C73300907918 /* ZKQMemoryCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQMemoryCache.m; sourceTree = "<group>"; };
 		18BFB1232191D07F00907918 /* TestTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
@@ -158,6 +164,8 @@
 				18BFB11F2191C66B00907918 /* ZKQMemoryCache */,
 				188C538B21907B6000E42DAC /* ZKQSlideView.h */,
 				188C538C21907B6000E42DAC /* ZKQSlideView.m */,
+				18BCCA682196C49E0025A340 /* ZKQScrollSlideView.h */,
+				18BCCA692196C49E0025A340 /* ZKQScrollSlideView.m */,
 			);
 			path = ZKQSlideView;
 			sourceTree = "<group>";
@@ -187,6 +195,15 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		18B3D99D2195D84700BFC7DA /* ScrollSlideView */ = {
+			isa = PBXGroup;
+			children = (
+				18B3D99E2195D88D00BFC7DA /* ScrollSlideViewController.h */,
+				18B3D99F2195D88D00BFC7DA /* ScrollSlideViewController.m */,
+			);
+			path = ScrollSlideView;
 			sourceTree = "<group>";
 		};
 		18BFB11F2191C66B00907918 /* ZKQMemoryCache */ = {
@@ -281,6 +298,7 @@
 				18A7F1CE218B4759007E75F7 /* TableViewLinkage */,
 				18CCA37A218EE62900B871F9 /* CollectionViewLinkage */,
 				188C538A21907AE700E42DAC /* TabBarSlideView */,
+				18B3D99D2195D84700BFC7DA /* ScrollSlideView */,
 				18DEE48C2189F49C00E320DA /* Main.storyboard */,
 				18DEE48F2189F49E00E320DA /* Assets.xcassets */,
 				18DEE4912189F49E00E320DA /* LaunchScreen.storyboard */,
@@ -569,9 +587,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A7F1D1218B47C2007E75F7 /* TableViewLinkageViewController.m in Sources */,
+				18BCCA6A2196C49E0025A340 /* ZKQScrollSlideView.m in Sources */,
 				18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */,
 				18BFB1252191D07F00907918 /* TestTableViewController.m in Sources */,
 				18DEE48B2189F49C00E320DA /* ViewController.m in Sources */,
+				18B3D9A02195D88D00BFC7DA /* ScrollSlideViewController.m in Sources */,
 				18CCA385218F0BFE00B871F9 /* ZKQCollectViewAlignedLayout.m in Sources */,
 				18CCA381218EF1E800B871F9 /* HYCollectViewAlignedLayout.m in Sources */,
 				188C53902190A0C600E42DAC /* TabBarSlideViewController.m in Sources */,

@@ -47,9 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 如果要允许左滑返回请将手势传入
 @property (nonatomic, weak) UIGestureRecognizer *popGestureRecognizer;
 
-
 // Default YES
 @property (nonatomic, assign) BOOL canScroll;
+
 
 - (void)build;
 - (void)scrollTo:(NSInteger)index animation:(BOOL)animation;

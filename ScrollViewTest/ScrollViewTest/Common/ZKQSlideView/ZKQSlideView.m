@@ -231,6 +231,7 @@ const NSTimeInterval kScrollTime = 0.3f;
 
 #pragma mark - action
 - (void)panHandler:(UIPanGestureRecognizer *)pan {
+    NSLog(@"%ld", pan.state);
     if (self.oldIndex < 0 || self.isScrolling) {
         return;
     }
