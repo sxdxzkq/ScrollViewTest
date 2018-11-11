@@ -130,7 +130,7 @@
     [self.slideTabBarView scrollingTo:toIndex percent:percent];
 }
 
-- (void)slideView:(ZKQScrollSlideView *)slideView didScrolledViewController:(UIViewController *)viewController atIndex:(NSInteger)index {
+- (void)slideView:(ZKQScrollSlideView *)slideView didScrolledAtIndex:(NSInteger)index {
     [self.slideTabBarView scrollDidIndex:index];
 }
 

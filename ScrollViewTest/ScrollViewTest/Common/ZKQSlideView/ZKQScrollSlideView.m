@@ -7,10 +7,11 @@
 //
 
 #import "ZKQScrollSlideView.h"
+#import "ZKQSlideCollectionView.h"
 
 @interface ZKQScrollSlideView () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 
-@property (nonatomic, weak) UICollectionView *collectionView;
+@property (nonatomic, weak) ZKQSlideCollectionView *collectionView;
 
 @property (nonatomic, assign) NSInteger scrollToIndex;
 @property (nonatomic, assign) CGPoint panStartPoint;
@@ -47,15 +48,12 @@
     [self.collectionView reloadData];
 }
 
-- (void)dealloc {
-    
-}
-
 #pragma mark - Private
 - (void)_commonInit {
     
     self.canScroll = YES;
     self.scrollToIndex = -1;
+    self.backgroundColor = [UIColor whiteColor];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -64,7 +62,7 @@
     flowLayout.sectionInset = UIEdgeInsetsZero;
     flowLayout.itemSize = CGSizeZero;
     
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+    ZKQSlideCollectionView *collectionView = [[ZKQSlideCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
     collectionView.pagingEnabled = YES;
     collectionView.delegate = self;
     collectionView.dataSource = self;
@@ -75,9 +73,6 @@
     [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
     [self addSubview:collectionView];
     self.collectionView = collectionView;
-    
-    //kvo
-    [collectionView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
     // 关闭自动空出NavigationBar
     self.translatesAutoresizingMaskIntoConstraints = NO;
@@ -101,15 +96,15 @@
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
+    cell.contentView.backgroundColor = self.backgroundColor;
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.scrollToIndex > 0 && cell.tag != self.scrollToIndex) {
+    if (self.scrollToIndex >= 0 && cell.tag != self.scrollToIndex) {
         return;
     }
-    
     
     UIViewController *vc = [self.dataSource slideView:self viewControllerAtIndex:indexPath.row];
     [self.baseViewController addChildViewController:vc];
@@ -149,55 +144,48 @@
     NSInteger panToIndex = self.currentIndex;
     
     if (self.oldIndex != panToIndex) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(slideView:didScrolledViewController:atIndex:)]) {
-            [self.delegate slideView:self didScrolledViewController:nil atIndex:panToIndex];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(slideView:didScrolledAtIndex:)]) {
+            
+            [self.delegate slideView:self didScrolledAtIndex:panToIndex];
         }
     }
     self.panStartPoint = CGPointMake(self.currentIndex*self.bounds.size.width, self.panStartPoint.y);;
     self.oldIndex = panToIndex;
     
-    NSLog(@"scrollViewWillBeginDragging");
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    NSLog(@"scrollViewDidEndDragging");
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 //    self.oldIndex = self.currentIndex;
-    CGFloat offsetx = self.collectionView.contentOffset.x - self.panStartPoint.x;
-    if (fabs(offsetx) > self.bounds.size.width) {
-        NSInteger panToIndex = self.currentIndex;
-        self.oldIndex = panToIndex;
-        self.panStartPoint = CGPointMake(self.currentIndex*self.bounds.size.width, self.panStartPoint.y);
-        offsetx = self.collectionView.contentOffset.x - self.panStartPoint.x;
-        if (self.delegate && [self.delegate respondsToSelector:@selector(slideView:didScrolledViewController:atIndex:)]) {
-            [self.delegate slideView:self didScrolledViewController:nil atIndex:panToIndex];
+    
+    if (scrollView.dragging || scrollView.tracking || scrollView.decelerating) {
+        CGFloat offsetx = self.collectionView.contentOffset.x - self.panStartPoint.x;
+        if (fabs(offsetx) > self.bounds.size.width) {
+            NSInteger panToIndex = self.currentIndex;
+            self.oldIndex = panToIndex;
+            self.panStartPoint = CGPointMake(self.currentIndex*self.bounds.size.width, self.panStartPoint.y);
+            offsetx = self.collectionView.contentOffset.x - self.panStartPoint.x;
+            if (self.delegate && [self.delegate respondsToSelector:@selector(slideView:didScrolledAtIndex:)]) {
+                [self.delegate slideView:self didScrolledAtIndex:panToIndex];
+            }
+        }
+        NSInteger oldIndex = -1;
+        NSInteger panToIndex = -1;
+        
+        if (offsetx > 0) {
+            oldIndex = self.oldIndex;
+            panToIndex = self.oldIndex + 1;
+        } else if (offsetx < 0) {
+            oldIndex = self.oldIndex;
+            panToIndex = self.oldIndex - 1;
+        }
+        
+        if (oldIndex >= 0 && panToIndex >= 0 && [self.delegate respondsToSelector:@selector(slideView:scrollingFrom:to:percent:)]) {
+            [self.delegate slideView:self scrollingFrom:oldIndex to:panToIndex percent:fabs(offsetx)/self.bounds.size.width];
         }
     }
-    NSInteger oldIndex = -1;
-    NSInteger panToIndex = -1;
-    
-    if (offsetx > 0) {
-        oldIndex = self.oldIndex;
-        panToIndex = self.oldIndex + 1;
-    } else if (offsetx < 0) {
-        oldIndex = self.oldIndex;
-        panToIndex = self.oldIndex - 1;
-    }
-    
-    if (oldIndex >= 0 && panToIndex >= 0 && [self.delegate respondsToSelector:@selector(slideView:scrollingFrom:to:percent:)]) {
-        [self.delegate slideView:self scrollingFrom:oldIndex to:panToIndex percent:fabs(offsetx)/self.bounds.size.width];
-    }
-    NSLog(@"%ld, %ld, %f, %ld", self.oldIndex, panToIndex, scrollView.contentOffset.x, self.collectionView.panGestureRecognizer.state);
-}
-
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-    NSLog(@"scrollViewWillBeginDecelerating");
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSLog(@"scrollViewDidEndDecelerating");
     CGFloat offsetx = self.collectionView.contentOffset.x - self.panStartPoint.x;
     if (fabs(offsetx) > self.bounds.size.width) {
         self.oldIndex = self.currentIndex;
@@ -218,46 +206,11 @@
     if (oldIndex >= 0 && panToIndex >= 0 && [self.delegate respondsToSelector:@selector(slideView:scrollingFrom:to:percent:)]) {
         [self.delegate slideView:self scrollingFrom:self.oldIndex to:panToIndex percent:1.0];
     }
-    if (self.delegate && [self.delegate respondsToSelector:@selector(slideView:didScrolledViewController:atIndex:)]) {
-        [self.delegate slideView:self didScrolledViewController:nil atIndex:panToIndex];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(slideView:didScrolledAtIndex:)]) {
+        [self.delegate slideView:self didScrolledAtIndex:panToIndex];
     }
     self.panStartPoint = CGPointZero;
     self.oldIndex = -1;
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    
-    if ([keyPath isEqualToString:@"contentOffset"]) {
-        
-//        if (self.collectionView.dragging || self.collectionView.tracking || self.collectionView.decelerating) {
-//            CGFloat offsetx = self.collectionView.contentOffset.x - self.panStartPoint.x;
-//            NSInteger oldIndex = -1;
-//            NSInteger panToIndex = -1;
-//
-//            if (offsetx > 0) {
-//                oldIndex = self.oldIndex;
-//                panToIndex = self.oldIndex + 1;
-//            } else if (offsetx < 0) {
-//                oldIndex = self.oldIndex + 1;
-//                panToIndex = self.oldIndex;
-//            }
-//
-//            if (oldIndex > 0 && panToIndex > 0 && [self.delegate respondsToSelector:@selector(slideView:scrollingFrom:to:percent:)]) {
-//                [self.delegate slideView:self scrollingFrom:oldIndex to:panToIndex percent:(labs((NSInteger)offsetx)%(NSInteger)self.bounds.size.width)/self.bounds.size.width];
-//            }
-//            NSLog(@"%ld, %ld, %f, %ld", self.oldIndex, panToIndex, offsetx, self.collectionView.panGestureRecognizer.state);
-//        }
-    }
-}
-
-#pragma mark - UIGestureRecognizerDelagate
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    
-    if (self.currentIndex == 0 && self.popGestureRecognizer == otherGestureRecognizer) {
-        return YES;
-    } else {
-        return NO;
-    }
 }
 
 #pragma mark - setter && getter
@@ -271,6 +224,13 @@
 - (void)setCanScroll:(BOOL)canScroll {
     _canScroll = canScroll;
     self.collectionView.scrollEnabled = canScroll;
+}
+
+- (void)setPopGestureRecognizer:(UIGestureRecognizer *)popGestureRecognizer {
+    __weak UIGestureRecognizer *pop = popGestureRecognizer;
+    _popGestureRecognizer = pop;
+    
+    self.collectionView.popGestureRecognizer = popGestureRecognizer;
 }
 
 /*

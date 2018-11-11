@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1620688C9B4E756F199F4704 /* libPods-ScrollViewTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75639DE2885B188062B003D /* libPods-ScrollViewTestTests.a */; };
 		18161296219336C80012DDEC /* ZKQSlideTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18161295219336C80012DDEC /* ZKQSlideTabBarView.m */; };
+		185E98F821983D4A00EB737F /* ZKQSlideCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E98F721983D4A00EB737F /* ZKQSlideCollectionView.m */; };
 		18882B22219482B00048C062 /* ZKQSlideColorTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18882B21219482B00048C062 /* ZKQSlideColorTool.m */; };
 		188C538D21907B6000E42DAC /* ZKQSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C538C21907B6000E42DAC /* ZKQSlideView.m */; };
 		188C53902190A0C600E42DAC /* TabBarSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C538F2190A0C600E42DAC /* TabBarSlideViewController.m */; };
@@ -56,6 +57,8 @@
 		18161294219336C80012DDEC /* ZKQSlideTabBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQSlideTabBarView.h; sourceTree = "<group>"; };
 		18161295219336C80012DDEC /* ZKQSlideTabBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQSlideTabBarView.m; sourceTree = "<group>"; };
 		184F55CB689ABB0988E55F49 /* Pods-ScrollViewTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollViewTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollViewTestTests/Pods-ScrollViewTestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		185E98F621983D4A00EB737F /* ZKQSlideCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQSlideCollectionView.h; sourceTree = "<group>"; };
+		185E98F721983D4A00EB737F /* ZKQSlideCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQSlideCollectionView.m; sourceTree = "<group>"; };
 		18882B20219482B00048C062 /* ZKQSlideColorTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQSlideColorTool.h; sourceTree = "<group>"; };
 		18882B21219482B00048C062 /* ZKQSlideColorTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQSlideColorTool.m; sourceTree = "<group>"; };
 		188C538B21907B6000E42DAC /* ZKQSlideView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQSlideView.h; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 				188C538C21907B6000E42DAC /* ZKQSlideView.m */,
 				18BCCA682196C49E0025A340 /* ZKQScrollSlideView.h */,
 				18BCCA692196C49E0025A340 /* ZKQScrollSlideView.m */,
+				185E98F621983D4A00EB737F /* ZKQSlideCollectionView.h */,
+				185E98F721983D4A00EB737F /* ZKQSlideCollectionView.m */,
 			);
 			path = ZKQSlideView;
 			sourceTree = "<group>";
@@ -591,6 +596,7 @@
 				18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */,
 				18BFB1252191D07F00907918 /* TestTableViewController.m in Sources */,
 				18DEE48B2189F49C00E320DA /* ViewController.m in Sources */,
+				185E98F821983D4A00EB737F /* ZKQSlideCollectionView.m in Sources */,
 				18B3D9A02195D88D00BFC7DA /* ScrollSlideViewController.m in Sources */,
 				18CCA385218F0BFE00B871F9 /* ZKQCollectViewAlignedLayout.m in Sources */,
 				18CCA381218EF1E800B871F9 /* HYCollectViewAlignedLayout.m in Sources */,

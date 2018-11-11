@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)slideView:(ZKQScrollSlideView *)slideView scrollingFrom:(NSInteger)fromIndex to:(NSInteger)toIndex percent:(CGFloat)percent;
 
-- (void)slideView:(ZKQScrollSlideView *)slideView didScrolledViewController:(UIViewController *)viewController atIndex:(NSInteger)index;
+- (void)slideView:(ZKQScrollSlideView *)slideView didScrolledAtIndex:(NSInteger)index;
 
 @end
 
