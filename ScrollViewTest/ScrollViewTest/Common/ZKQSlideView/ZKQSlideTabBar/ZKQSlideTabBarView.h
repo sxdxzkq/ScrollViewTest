@@ -47,8 +47,8 @@ typedef NS_ENUM(NSUInteger, ZKQSlideTabBarViewItemImageType) {
 
 - (void)buildTabBarItems:(NSArray <ZKQSlideTabBarViewItem *> *)tabBarItems;
 
-- (void)scrollingFrom:(NSInteger)fromIndex to:(NSInteger)toIndex percent:(CGFloat)percent;
-
+- (void)scrollingTo:(NSInteger)toIndex percent:(CGFloat)percent;
+- (void)scrollDidIndex:(NSInteger)index;
 
 @end
 

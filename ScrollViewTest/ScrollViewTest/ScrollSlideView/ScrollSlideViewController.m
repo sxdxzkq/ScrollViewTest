@@ -7,10 +7,21 @@
 //
 
 #import "ScrollSlideViewController.h"
+#import "TestTableViewController.h"
 
-@interface ScrollSlideViewController () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
+#import "ZKQScrollSlideView.h"
+#import "ZKQSlideTabBarView.h"
+#import "ZKQMemoryCache.h"
 
-@property (nonatomic, weak) UICollectionView *collectionView;
+#import <UINavigationController+FDFullscreenPopGesture.h>
+
+@interface ScrollSlideViewController () <ZKQScrollSlideViewDelegate, ZKQScrollSlideViewDataSource, ZKQSlideTabbarDelegate>
+
+@property (nonatomic, weak) ZKQScrollSlideView *slideView;
+
+@property (nonatomic, strong) ZKQMemoryCache *cache;
+
+@property (nonatomic, weak) ZKQSlideTabBarView *slideTabBarView;
 
 @end
 
@@ -19,73 +30,122 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = UIColor.whiteColor;
-    [self _commonInit];
     
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:5 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-//    });
+    [self _commonUI];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-    flowLayout.itemSize = self.view.bounds.size;
-    self.collectionView.frame = self.view.bounds;
-    [self.collectionView reloadData];
+    [self.view bringSubviewToFront:self.slideTabBarView];
+    
+    CGFloat tabBarHight = 40;
+    CGFloat top = 0;
+    if (@available(iOS 11.0, *)) {
+        top = self.view.safeAreaInsets.top;
+    } else {
+        // Fallback on earlier versions
+        top = self.navigationController.navigationBar.bounds.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+    }
+    
+    self.slideTabBarView.frame = CGRectMake(0, top, self.view.bounds.size.width, tabBarHight);
+    
+    self.slideView.frame = CGRectMake(0, self.slideTabBarView.frame.origin.y + self.slideTabBarView.bounds.size.height, self.view.bounds.size.width, self.view.bounds.size.height - self.slideTabBarView.frame.origin.y - self.slideTabBarView.bounds.size.height);
 }
 
-- (void)_commonInit {
+- (void)_commonUI {
     
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    flowLayout.minimumLineSpacing = 0;
-    flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.sectionInset = UIEdgeInsetsZero;
-    flowLayout.itemSize = CGSizeZero;
+    ZKQSlideTabBarView *slideTabBarView = [[ZKQSlideTabBarView alloc] init];
+    slideTabBarView.delegate = self;
+    slideTabBarView.trackColor = [UIColor colorWithRGB:0xcc0000];
     
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
-    collectionView.pagingEnabled = YES;
-    collectionView.delegate = self;
-    collectionView.dataSource = self;
-    collectionView.bounces = NO;
-    collectionView.alwaysBounceVertical = NO;
-    collectionView.alwaysBounceHorizontal = NO;
-    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
-    [self.view addSubview:collectionView];
-    self.collectionView = collectionView;
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSInteger i = 0; i < 4; i++) {
+        ZKQSlideTabBarViewItem *item = [ZKQSlideTabBarViewItem commonItem];
+        item.title = [NSString stringWithFormat:@"第%zd个", i];
+        [array addObject:item];
+    }
     
-    // 关闭自动空出NavigationBar
-//    self.translatesAutoresizingMaskIntoConstraints = NO;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    [slideTabBarView buildTabBarItems:array];
     
-    return 10;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCell" forIndexPath:indexPath];
-    
-    cell.tag = indexPath.row;
-    
-    cell.contentView.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1.0];
-    
-    return cell;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSLog(@"willDisplayCell %ld", cell.tag);
+    [self.view addSubview:slideTabBarView];
+    self.slideTabBarView = slideTabBarView;
     
     
+    ZKQScrollSlideView *slideView = [[ZKQScrollSlideView alloc] init];
+    slideView.delegate = self;
+    slideView.dataSource = self;
+    slideView.baseViewController = self;
+    slideView.popGestureRecognizer = self.navigationController.fd_fullscreenPopGestureRecognizer;
+    [self.view addSubview:slideView];
+    self.slideView = slideView;
+    
+    self.cache = [[ZKQMemoryCache alloc] initWithCacheCount:4];
     
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"didEndDisplayingCell %ld", cell.tag);
+#pragma mark - ZKQSlideView
+
+- (NSInteger)numberOfControllersInSlideView:(ZKQScrollSlideView *)slideView {
+    return 4;
 }
+
+- (UIViewController *)slideView:(ZKQScrollSlideView *)slideView viewControllerAtIndex:(NSInteger)index {
+    
+    NSString *key = [NSString stringWithFormat:@"%zd", index];
+    
+    UIViewController *con = [self.cache objectForKey:key];
+    
+    if (con) {
+        return con;
+    }
+    
+    TestTableViewController *message = [[TestTableViewController alloc] init];
+    
+    UIColor *color;
+    
+    switch (index) {
+        case 0:
+            color = [UIColor orangeColor];
+            break;
+        case 1:
+            color = [UIColor blueColor];
+            break;
+        case 2:
+            color = [UIColor greenColor];
+            break;
+        case 3:
+            color = [UIColor redColor];
+            break;
+            
+        default:
+            break;
+    }
+    
+    message.view.backgroundColor = color;
+    return message;
+    
+}
+
+- (void)slideView:(ZKQScrollSlideView *)slideView scrollingFrom:(NSInteger)fromIndex to:(NSInteger)toIndex percent:(CGFloat)percent {
+    [self.slideTabBarView scrollingTo:toIndex percent:percent];
+}
+
+- (void)slideView:(ZKQScrollSlideView *)slideView didScrolledViewController:(UIViewController *)viewController atIndex:(NSInteger)index {
+    [self.slideTabBarView scrollDidIndex:index];
+}
+
+- (void)slideView:(ZKQScrollSlideView *)slideView scrollCanceled:(NSInteger)fromIndex {
+    
+}
+
+- (BOOL)slideTabBarCanSelect:(id)sender {
+    return YES;
+}
+
+- (void)slideTabBar:(id)sender selectAt:(NSInteger)index {
+    [self.slideView scrollTo:index animation:YES];
+}
+
 
 /*
 #pragma mark - Navigation

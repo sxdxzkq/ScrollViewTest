@@ -231,7 +231,6 @@ const NSTimeInterval kScrollTime = 0.3f;
 
 #pragma mark - action
 - (void)panHandler:(UIPanGestureRecognizer *)pan {
-    NSLog(@"%ld", pan.state);
     if (self.oldIndex < 0 || self.isScrolling) {
         return;
     }
@@ -248,8 +247,7 @@ const NSTimeInterval kScrollTime = 0.3f;
         
         if (offsetx > 0) {
             panToIndex = self.oldIndex - 1;
-        }
-        else if(offsetx < 0){
+        } else if (offsetx < 0) {
             panToIndex = self.oldIndex + 1;
         }
         
@@ -306,17 +304,15 @@ const NSTimeInterval kScrollTime = 0.3f;
                         [self.delegate slideView:self didScrolledViewController:self.oldViewController atIndex:self.oldIndex];
                     }
                 }];
-            }
-            else{
+            } else {
                 [self backToOldWithOffset:offsetx];
                 self.panStartPoint = CGPointZero;
             }
-        }
-        else{
+        } else {
             [self backToOldWithOffset:offsetx];
             self.panStartPoint = CGPointZero;
         }
-    } else{
+    } else {
         CGFloat offsetx = point.x - self.panStartPoint.x;
         [self backToOldWithOffset:offsetx];
         self.panStartPoint = CGPointZero;

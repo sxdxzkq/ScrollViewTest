@@ -21,8 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) NSInteger selectedIndex;
 @property(nonatomic, readonly, assign) NSInteger tabBarCount;
 @property(nonatomic, weak) id <ZKQSlideTabbarDelegate> delegate;
-- (void)scrollingFrom:(NSInteger)fromIndex to:(NSInteger)toIndex percent:(float)percent;
-
+- (void)scrollingTo:(NSInteger)toIndex percent:(float)percent;
+- (void)scrollDidIndex:(NSInteger)index;
 
 @end
 

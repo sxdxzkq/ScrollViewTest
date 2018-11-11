@@ -130,11 +130,11 @@
 }
 
 - (void)slideView:(ZKQSlideView *)slideView scrollingFrom:(NSInteger)fromIndex to:(NSInteger)toIndex percent:(CGFloat)percent {
-    [self.slideTabBarView scrollingFrom:fromIndex to:toIndex percent:percent];
+    [self.slideTabBarView scrollingTo:toIndex percent:percent];
 }
 
 - (void)slideView:(ZKQSlideView *)slideView didScrolledViewController:(UIViewController *)viewController atIndex:(NSInteger)index {
-    
+    [self.slideTabBarView scrollDidIndex:index];
 }
 
 - (void)slideView:(ZKQSlideView *)slideView scrollCanceled:(NSInteger)fromIndex {

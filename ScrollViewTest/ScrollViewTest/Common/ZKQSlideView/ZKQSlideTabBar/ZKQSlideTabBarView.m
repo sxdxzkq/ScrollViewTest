@@ -203,10 +203,10 @@ const NSInteger kImageTagBase = 3000;
 }
 
 #pragma mark - ZKQSlideTabBarProtocol
-- (void)scrollingFrom:(NSInteger)fromIndex to:(NSInteger)toIndex percent:(CGFloat)percent {
-    ZKQSlideTabBarViewItem *fromItem = [self.tabBarItems objectAtIndex:fromIndex];
+- (void)scrollingTo:(NSInteger)toIndex percent:(CGFloat)percent {
+    ZKQSlideTabBarViewItem *fromItem = [self.tabBarItems objectAtIndex:self.selectedIndex];
     
-    UIButton *fromButton = (UIButton *)[self.backgroundImageView viewWithTag:kButtonTagBase + fromIndex];
+    UIButton *fromButton = (UIButton *)[self.backgroundImageView viewWithTag:kButtonTagBase + self.selectedIndex];
     
     UILabel *fromLabel = (UILabel *)[fromButton viewWithTag:kLabelTagBase];
     UIImageView *fromIamge = (UIImageView *)[fromButton viewWithTag:kImageTagBase];
@@ -228,13 +228,17 @@ const NSInteger kImageTagBase = 3000;
     
     float width = self.bounds.size.width/self.tabBarCount;
     float trackX;
-    if (toIndex > fromIndex) {
-        trackX = width*fromIndex + width*percent;
+    if (toIndex > self.selectedIndex) {
+        trackX = width*self.selectedIndex + width*percent;
     } else {
-        trackX = width*fromIndex - width*percent;
+        trackX = width*self.selectedIndex - width*percent;
     }
     
     self.trackImageView.frame = CGRectMake(trackX, self.trackImageView.frame.origin.y, CGRectGetWidth(self.trackImageView.bounds), CGRectGetHeight(self.trackImageView.bounds));
+}
+
+- (void)scrollDidIndex:(NSInteger)index {
+    _selectedIndex = index;
 }
 
 #pragma mark - setter && getter
