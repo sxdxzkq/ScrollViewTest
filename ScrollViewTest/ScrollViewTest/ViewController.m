@@ -12,6 +12,7 @@
 #import "CollectionViewLinkageViewController.h"
 #import "TabBarSlideViewController.h"
 #import "ScrollSlideViewController.h"
+#import "ScrollInScrollViewController.h"
 
 #import <Masonry.h>
 
@@ -54,7 +55,7 @@
 
 - (NSArray *)datas {
     if (!_datas) {
-        _datas = @[@"TableView联动", @"CollectionView联动(未完成)", @"TabBarSlideView", @"ScrollSlideView"];
+        _datas = @[@"TableView联动", @"CollectionView联动(未完成)", @"TabBarSlideView", @"ScrollSlideView", @"ScrollInScrollViewController"];
     }
     return _datas;
 }
@@ -91,7 +92,9 @@
         case 3:
             [self.navigationController pushViewController:[[ScrollSlideViewController alloc] init] animated:YES];
             break;
-            
+        case 4:
+            [self.navigationController pushViewController:[[ScrollInScrollViewController alloc] init] animated:YES];
+            break;
             
         default:
             break;
