@@ -13,6 +13,7 @@
 #import "TabBarSlideViewController.h"
 #import "ScrollSlideViewController.h"
 #import "ScrollInScrollViewController.h"
+#import "UpdateImageViewController.h"
 
 #import <Masonry.h>
 
@@ -55,7 +56,7 @@
 
 - (NSArray *)datas {
     if (!_datas) {
-        _datas = @[@"TableView联动", @"CollectionView联动(未完成)", @"TabBarSlideView", @"ScrollSlideView", @"ScrollInScrollViewController"];
+        _datas = @[@"TableView联动", @"CollectionView联动(未完成)", @"TabBarSlideView", @"ScrollSlideView", @"ScrollInScrollViewController", @"UpdateImage"];
     }
     return _datas;
 }
@@ -94,6 +95,9 @@
             break;
         case 4:
             [self.navigationController pushViewController:[[ScrollInScrollViewController alloc] init] animated:YES];
+            break;
+        case 5:
+            [self.navigationController pushViewController:[[UpdateImageViewController alloc] init] animated:YES];
             break;
             
         default:

@@ -180,7 +180,9 @@
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:index];
     
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+//    [self.collectionView scrollRectToVisible:<#(CGRect)#> animated:<#(BOOL)#>];
+//
+//    [self.collectionView ]
 }
 
 - (NSString *)linkageView:(LinkageView *)linkageView titleForIndex:(NSInteger)index {

@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		1620688C9B4E756F199F4704 /* libPods-ScrollViewTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75639DE2885B188062B003D /* libPods-ScrollViewTestTests.a */; };
 		18161296219336C80012DDEC /* ZKQSlideTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18161295219336C80012DDEC /* ZKQSlideTabBarView.m */; };
+		18403BB921A585AF00A12F45 /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18403BB721A585AF00A12F45 /* TZTestCell.m */; };
 		185E98F821983D4A00EB737F /* ZKQSlideCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E98F721983D4A00EB737F /* ZKQSlideCollectionView.m */; };
 		185E98FC2198508300EB737F /* ScrollInScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E98FB2198508300EB737F /* ScrollInScrollViewController.m */; };
 		18882B22219482B00048C062 /* ZKQSlideColorTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18882B21219482B00048C062 /* ZKQSlideColorTool.m */; };
 		188C538D21907B6000E42DAC /* ZKQSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C538C21907B6000E42DAC /* ZKQSlideView.m */; };
 		188C53902190A0C600E42DAC /* TabBarSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C538F2190A0C600E42DAC /* TabBarSlideViewController.m */; };
+		189B1FD821A5831800ED1765 /* UpdateImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189B1FD721A5831800ED1765 /* UpdateImageViewController.m */; };
 		18A7F1D1218B47C2007E75F7 /* TableViewLinkageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */; };
 		18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F1D3218B4906007E75F7 /* LinkageView.m */; };
 		18B3D9A02195D88D00BFC7DA /* ScrollSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3D99F2195D88D00BFC7DA /* ScrollSlideViewController.m */; };
@@ -57,6 +59,8 @@
 		18161293219333800012DDEC /* ZKQSlideTabBarProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQSlideTabBarProtocol.h; sourceTree = "<group>"; };
 		18161294219336C80012DDEC /* ZKQSlideTabBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQSlideTabBarView.h; sourceTree = "<group>"; };
 		18161295219336C80012DDEC /* ZKQSlideTabBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQSlideTabBarView.m; sourceTree = "<group>"; };
+		18403BB721A585AF00A12F45 /* TZTestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTestCell.m; sourceTree = "<group>"; };
+		18403BB821A585AF00A12F45 /* TZTestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTestCell.h; sourceTree = "<group>"; };
 		184F55CB689ABB0988E55F49 /* Pods-ScrollViewTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollViewTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollViewTestTests/Pods-ScrollViewTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		185E98F621983D4A00EB737F /* ZKQSlideCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQSlideCollectionView.h; sourceTree = "<group>"; };
 		185E98F721983D4A00EB737F /* ZKQSlideCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQSlideCollectionView.m; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 		188C538C21907B6000E42DAC /* ZKQSlideView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQSlideView.m; sourceTree = "<group>"; };
 		188C538E2190A0C600E42DAC /* TabBarSlideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarSlideViewController.h; sourceTree = "<group>"; };
 		188C538F2190A0C600E42DAC /* TabBarSlideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarSlideViewController.m; sourceTree = "<group>"; };
+		189B1FD621A5831800ED1765 /* UpdateImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateImageViewController.h; sourceTree = "<group>"; };
+		189B1FD721A5831800ED1765 /* UpdateImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateImageViewController.m; sourceTree = "<group>"; };
 		18A7F1CF218B47C2007E75F7 /* TableViewLinkageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewLinkageViewController.h; sourceTree = "<group>"; };
 		18A7F1D0218B47C2007E75F7 /* TableViewLinkageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewLinkageViewController.m; sourceTree = "<group>"; };
 		18A7F1D2218B4906007E75F7 /* LinkageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageView.h; sourceTree = "<group>"; };
@@ -196,6 +202,17 @@
 			path = TabBarSlideView;
 			sourceTree = "<group>";
 		};
+		189B1FD521A582E400ED1765 /* UpdateImage */ = {
+			isa = PBXGroup;
+			children = (
+				18403BB821A585AF00A12F45 /* TZTestCell.h */,
+				18403BB721A585AF00A12F45 /* TZTestCell.m */,
+				189B1FD621A5831800ED1765 /* UpdateImageViewController.h */,
+				189B1FD721A5831800ED1765 /* UpdateImageViewController.m */,
+			);
+			path = UpdateImage;
+			sourceTree = "<group>";
+		};
 		18A7F1CE218B4759007E75F7 /* TableViewLinkage */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +334,7 @@
 				188C538A21907AE700E42DAC /* TabBarSlideView */,
 				18B3D99D2195D84700BFC7DA /* ScrollSlideView */,
 				185E98F92198505F00EB737F /* ScrollInScroll */,
+				189B1FD521A582E400ED1765 /* UpdateImage */,
 				18DEE48C2189F49C00E320DA /* Main.storyboard */,
 				18DEE48F2189F49E00E320DA /* Assets.xcassets */,
 				18DEE4912189F49E00E320DA /* LaunchScreen.storyboard */,
@@ -533,10 +551,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ScrollViewTest/Pods-ScrollViewTest-resources.sh",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -612,9 +632,11 @@
 				185E98F821983D4A00EB737F /* ZKQSlideCollectionView.m in Sources */,
 				18B3D9A02195D88D00BFC7DA /* ScrollSlideViewController.m in Sources */,
 				18CCA385218F0BFE00B871F9 /* ZKQCollectViewAlignedLayout.m in Sources */,
+				18403BB921A585AF00A12F45 /* TZTestCell.m in Sources */,
 				18CCA381218EF1E800B871F9 /* HYCollectViewAlignedLayout.m in Sources */,
 				188C53902190A0C600E42DAC /* TabBarSlideViewController.m in Sources */,
 				188C538D21907B6000E42DAC /* ZKQSlideView.m in Sources */,
+				189B1FD821A5831800ED1765 /* UpdateImageViewController.m in Sources */,
 				18882B22219482B00048C062 /* ZKQSlideColorTool.m in Sources */,
 				18DEE4962189F49E00E320DA /* main.m in Sources */,
 				18161296219336C80012DDEC /* ZKQSlideTabBarView.m in Sources */,

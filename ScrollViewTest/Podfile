@@ -13,6 +13,7 @@ target 'ScrollViewTest' do
   pod 'MJExtension'
   pod 'Masonry'
   pod 'FDFullscreenPopGesture'
+  pod 'TZImagePickerController'
 
   target 'ScrollViewTestTests' do
     inherit! :search_paths
