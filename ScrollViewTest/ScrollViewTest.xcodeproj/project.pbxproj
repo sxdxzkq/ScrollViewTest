@@ -10,6 +10,7 @@
 		1620688C9B4E756F199F4704 /* libPods-ScrollViewTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75639DE2885B188062B003D /* libPods-ScrollViewTestTests.a */; };
 		18161296219336C80012DDEC /* ZKQSlideTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18161295219336C80012DDEC /* ZKQSlideTabBarView.m */; };
 		18403BB921A585AF00A12F45 /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18403BB721A585AF00A12F45 /* TZTestCell.m */; };
+		18403BBC21A5A38200A12F45 /* VisionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18403BBB21A5A38200A12F45 /* VisionViewController.m */; };
 		185E98F821983D4A00EB737F /* ZKQSlideCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E98F721983D4A00EB737F /* ZKQSlideCollectionView.m */; };
 		185E98FC2198508300EB737F /* ScrollInScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E98FB2198508300EB737F /* ScrollInScrollViewController.m */; };
 		18882B22219482B00048C062 /* ZKQSlideColorTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18882B21219482B00048C062 /* ZKQSlideColorTool.m */; };
@@ -61,6 +62,8 @@
 		18161295219336C80012DDEC /* ZKQSlideTabBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQSlideTabBarView.m; sourceTree = "<group>"; };
 		18403BB721A585AF00A12F45 /* TZTestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTestCell.m; sourceTree = "<group>"; };
 		18403BB821A585AF00A12F45 /* TZTestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTestCell.h; sourceTree = "<group>"; };
+		18403BBA21A5A38200A12F45 /* VisionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VisionViewController.h; sourceTree = "<group>"; };
+		18403BBB21A5A38200A12F45 /* VisionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VisionViewController.m; sourceTree = "<group>"; };
 		184F55CB689ABB0988E55F49 /* Pods-ScrollViewTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollViewTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollViewTestTests/Pods-ScrollViewTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		185E98F621983D4A00EB737F /* ZKQSlideCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKQSlideCollectionView.h; sourceTree = "<group>"; };
 		185E98F721983D4A00EB737F /* ZKQSlideCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKQSlideCollectionView.m; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 				18DEE48A2189F49C00E320DA /* ViewController.m */,
 				18BFB1232191D07F00907918 /* TestTableViewController.h */,
 				18BFB1242191D07F00907918 /* TestTableViewController.m */,
+				18403BBA21A5A38200A12F45 /* VisionViewController.h */,
+				18403BBB21A5A38200A12F45 /* VisionViewController.m */,
 				18CCA374218EA79D00B871F9 /* Common */,
 				18A7F1CE218B4759007E75F7 /* TableViewLinkage */,
 				18CCA37A218EE62900B871F9 /* CollectionViewLinkage */,
@@ -628,6 +633,7 @@
 				18BCCA6A2196C49E0025A340 /* ZKQScrollSlideView.m in Sources */,
 				18A7F1D4218B4906007E75F7 /* LinkageView.m in Sources */,
 				18BFB1252191D07F00907918 /* TestTableViewController.m in Sources */,
+				18403BBC21A5A38200A12F45 /* VisionViewController.m in Sources */,
 				18DEE48B2189F49C00E320DA /* ViewController.m in Sources */,
 				185E98F821983D4A00EB737F /* ZKQSlideCollectionView.m in Sources */,
 				18B3D9A02195D88D00BFC7DA /* ScrollSlideViewController.m in Sources */,
